@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-layout',
-  standalone: true,
+  // standalone: true,
  imports: [
     RouterOutlet,
     RouterLink,

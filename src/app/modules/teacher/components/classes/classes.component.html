@@ -1,0 +1,68 @@
+<div class="dashboard-container">
+    <div class="header-row">
+      <h2>My Classes</h2>
+      <button class="btn primary" (click)="openModal(addClassModal)">Add Class</button>
+    </div>
+  
+    <div class="class-grid">
+      <div class="class-card" *ngFor="let c of classes">
+        <img [src]="c.image" [alt]="c.title" class="class-img" />
+        <div class="class-info">
+          <h3>{{ c.code }}</h3>
+          <p class="subtitle">{{ c.title }}</p>
+          <p class="session">Next session: {{ c.nextSession }}</p>
+          <p class="meta">{{ c.students }} students · {{ c.reviewCompletion }}% review completion</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Add Class Modal -->
+  <ng-template #addClassModal let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title">Add New Class</h5>
+      <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+    </div>
+  
+    <div class="modal-body">
+      <form #classForm="ngForm" (ngSubmit)="saveClass(modal)">
+        <div class="mb-3">
+          <label class="form-label fw-medium">Class Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="className"
+  
+            required
+            placeholder="Enter class name"
+          />
+        </div>
+  
+        <div class="mb-3">
+          <label class="form-label fw-medium">Description</label>
+          <textarea
+            class="form-control"
+            name="description"
+  
+            rows="3"
+            placeholder="Enter description"
+          ></textarea>
+        </div>
+  
+        <div class="mb-3">
+          <label class="form-label fw-medium">Display Picture</label>
+          <input
+            type="file"
+            class="form-control"
+            (change)="onImageSelected($event)"
+            accept="image/*"
+          />
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Class</button>
+        </div>
+      </form>
+    </div>
+  </ng-template>

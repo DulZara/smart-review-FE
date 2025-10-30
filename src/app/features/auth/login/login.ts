@@ -11,7 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @Component({
-  standalone: true,
+  // standalone: true,
   selector: 'app-login',
   imports: [CommonModule, RouterLink, ReactiveFormsModule,
     MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule],

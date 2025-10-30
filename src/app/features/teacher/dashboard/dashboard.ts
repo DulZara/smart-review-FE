@@ -14,7 +14,7 @@ type Tab = 'overview' | 'topics' | 'assignments' | 'students';
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
+  // standalone: true,
   imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, MatListModule, Assignments, Students, Topic, Overview],
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.scss'],

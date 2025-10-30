@@ -1,0 +1,76 @@
+/* === Sidebar Container === */
+.aside {
+    width: 260px;
+    background: #ffffff; /* white background */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    border-right: 1px solid #e2e8f0; /* subtle divider line */
+  }
+  
+  .brand {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;   /* Align left */
+    gap: 0.6rem;
+    font-weight: 700;
+    font-weight: 700;
+    font-size: 1.6rem;
+    padding: 1rem 1.2rem;          /* same left padding as menu items */
+    background: #ffffff;
+    color: #0f172a;
+    // border-bottom: 1px solid #e2e8f0;
+  
+    .brand-icon {
+      font-size: 22px;
+      color: #0f172a;
+    }
+  }
+  /* === Navigation === */
+  .nav {
+    padding: 0rem 0.5rem;
+  }
+  
+  .teacher-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  /* === Navigation Items === */
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #0f172a;
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+  
+    .nav-icon {
+      font-size: 20px;
+      color: #0f172a;
+    }
+  
+    &:hover {
+      background: #f1f5f9; /* light gray hover */
+      color: #000;
+  
+      .nav-icon {
+        color: #000;
+      }
+    }
+  
+    &.active {
+      background: #f1f5f9; /* same gray for active */
+      font-weight: 500;
+      color: #000;
+  
+      .nav-icon {
+        color: #000;
+      }
+    }
+  }
+  

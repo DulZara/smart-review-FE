@@ -5,7 +5,7 @@ import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-admin-messages',
-  standalone: true,
+  // standalone: true,
   imports: [NgFor],
   templateUrl: './admin-messages.component.html',
   styleUrls: ['./admin-messages.component.css'],

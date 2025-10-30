@@ -1,0 +1,76 @@
+
+
+<nav class="nav">
+    <div class="brand">StudyReview</div>
+  <!-- Admin Section -->
+  <div class="menu-group" *ngIf="userRole === 'ADMIN'">
+    <button class="menu-header" (click)="toggle('admin')">
+      <mat-icon>{{ isOpen('admin') ? 'expand_less' : 'expand_more' }}</mat-icon>
+      <span>Admin</span>
+    </button>
+    <div class="menu-items" *ngIf="isOpen('admin') || true">
+      <a routerLink="/app/admin/dashboard" routerLinkActive="active" class="link">Dashboard</a>
+      <a routerLink="/app/admin/teacher" routerLinkActive="active" class="link">Manage Teachers</a>
+      <a routerLink="/app/admin/student" routerLinkActive="active" class="link">Manage Students</a>
+    </div>
+  </div>
+
+  <!-- Student Section -->
+  <div class="menu-group" *ngIf="userRole === 'STUDENT'">
+    <button class="menu-header" (click)="toggle('student')">
+      <mat-icon>{{ isOpen('student') ? 'expand_less' : 'expand_more' }}</mat-icon>
+      <span>Student</span>
+    </button>
+    <div class="menu-items" *ngIf="isOpen('student') || true">
+      <a routerLink="/app/student/home" routerLinkActive="active" class="link">Home</a>
+      <a routerLink="/app/student/dashboard" routerLinkActive="active" class="link">My Courses</a>
+      <a routerLink="/app/student/messages" routerLinkActive="active" class="link">Messages</a>
+    </div>
+  </div>
+
+  <!-- Teacher Section -->
+  <!-- 🧑‍🏫 Teacher Menu -->
+    <div class="menu-group" *ngIf="userRole === 'TEACHER'">
+        <nav class="teacher-nav">
+        <a routerLink="/app/teacher/dashboard" routerLinkActive="active" class="nav-item">
+            <mat-icon class="nav-icon">home</mat-icon>
+            <span>Dashboard</span>
+        </a>
+    
+        <a routerLink="/app/teacher/classes" routerLinkActive="active"  class="nav-item">
+            <mat-icon class="nav-icon">class</mat-icon>
+            <span>Classes</span>
+        </a>
+    
+        <a routerLink="/app/teacher/message" routerLinkActive="active" class="nav-item">
+            <mat-icon class="nav-icon">chat</mat-icon>
+            <span>Messages</span>
+        </a>
+        </nav>
+    </div>
+
+
+
+</nav>
+<!-- 
+<main class="main">
+    <header class="header">
+      <button class="menu-btn"  aria-label="Toggle menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <div class="spacer"></div>
+
+      <div class="top-actions">
+        <button mat-icon-button aria-label="Logout"  title="Logout">
+          <mat-icon>logout</mat-icon>
+        </button>
+        <a routerLink="/app/notifications" class="hdr-link">Notifications</a>
+        <a routerLink="/app/profile" class="hdr-link">Profile</a>
+      </div>
+    </header>
+
+    <section class="content">
+      <router-outlet></router-outlet>
+    </section>
+  </main> -->
