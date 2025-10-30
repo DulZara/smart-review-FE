@@ -1,19 +1,20 @@
 import { Component } from '@angular/core';
-import { Student } from '../../../core/models/student.model';
-import { AdminDataService } from '../../../core/services/admin-data.service';
+import { Teacher } from '../../../../core/models/teacher.model';
+import { AdminDataService } from '../../../../core/services/admin-data.service';
+import { FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-admin-student',
+  selector: 'app-admin-teacher',
   imports: [CommonModule],
-  templateUrl: './admin-student.html',
-  styleUrl: './admin-student.scss',
+  templateUrl: './admin-teacher.html',
+  styleUrl: './admin-teacher.scss',
 })
-export class AdminStudent {
+export class AdminTeacher {
   page = 1;
   pageSize = 4;
 
-  students: Student[] = [];
+  teachers: Teacher[] = [];
   total = 0;
 
   constructor(private data: AdminDataService) {
@@ -21,8 +22,8 @@ export class AdminStudent {
   }
 
   load() {
-    const res = this.data.getStudents(this.page, this.pageSize);
-    this.students = res.data;
+    const res = this.data.getTeachers(this.page, this.pageSize);
+    this.teachers = res.data;
     this.total = res.total;
   }
 
@@ -45,4 +46,3 @@ export class AdminStudent {
     return pages;
   }
 }
-
