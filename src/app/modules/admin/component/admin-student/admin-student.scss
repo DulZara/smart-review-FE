@@ -43,6 +43,89 @@ $radius-lg: 12px;
 $transition: all 0.3s ease;
 $transition-fast: all 0.2s ease;
 
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 600px;
+  height: 850px;
+  z-index: 2001;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  margin: 20px;
+}
+
+.form-row {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75rem;
+
+  label {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  input,
+  select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+
+  small {
+    color: red;
+    font-size: 0.75rem;
+  }
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  .cancel {
+    background: #ccc;
+    color: #000;
+  }
+
+  .submit {
+    background: #3b82f6;
+    color: #fff;
+  }
+
+  button {
+    margin: 10px;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+}
+
 // Students Section Styles
 .students-wrapper {
   max-width: 1200px;
