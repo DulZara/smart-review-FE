@@ -16,7 +16,8 @@ export class SideBar {
   userRole: string | null = null;
   constructor(private jwtService: JwtService) {}
   ngOnInit(): void {
-    this.userRole = this.jwtService.getRole();  
+    // this.userRole = this.jwtService.getRole();  
+    this.userRole = "ADMIN";  
     console.log("role",this.userRole);
     
   }

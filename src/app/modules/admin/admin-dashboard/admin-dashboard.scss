@@ -1,0 +1,383 @@
+// Color Theme Variables
+$primary-blue: #3b82f6;
+$primary-blue-dark: #2563eb;
+$primary-blue-light: #1d4ed8;
+$primary-blue-pale: #e0e7ff;
+$primary-blue-pale-hover: #f1f5ff;
+
+$gray-50: #f9fafb;
+$gray-100: #f8fafc;
+$gray-200: #f1f5f9;
+$gray-300: #e2e8f0;
+$gray-400: #cbd5e1;
+$gray-500: #94a3b8;
+$gray-600: #475569;
+$gray-700: #334155;
+$gray-800: #1e293b;
+$gray-900: #0f172a;
+
+$white: #ffffff;
+$shadow: rgba(0, 0, 0, 0.05);
+$shadow-light: rgba(0, 0, 0, 0.04);
+
+// Typography
+$font-family: 'Inter', 'Segoe UI', sans-serif;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Spacing
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 0.75rem;
+$spacing-lg: 1rem;
+$spacing-xl: 1.5rem;
+$spacing-xxl: 2rem;
+
+// Border Radius
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+
+// Transitions
+$transition: all 0.3s ease;
+$transition-fast: all 0.2s ease;
+
+// Admin Dashboard Styles
+.admin-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-xl;
+
+  .page-title {
+    font-size: 1.75rem;
+    font-weight: $font-weight-semibold;
+    color: $gray-900;
+    margin-bottom: $spacing-xl;
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+
+    &::before {
+      content: '';
+      width: 4px;
+      height: 24px;
+      background: linear-gradient(135deg, $primary-blue, $primary-blue-dark);
+      border-radius: $radius-sm;
+    }
+  }
+
+  .section-label {
+    font-size: 1.125rem;
+    font-weight: $font-weight-semibold;
+    color: $gray-800;
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-sm;
+    border-bottom: 2px solid $gray-200;
+  }
+
+  .cards-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: $spacing-xl;
+    margin-bottom: $spacing-xxl;
+  }
+
+  .stat-card {
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-lg;
+    padding: $spacing-xl;
+    box-shadow: 0 1px 3px $shadow-light;
+    transition: $transition;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, $primary-blue, $primary-blue-dark);
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-color: $primary-blue-pale;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      font-weight: $font-weight-medium;
+      color: $gray-600;
+      margin-bottom: $spacing-md;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: $font-weight-bold;
+      color: $gray-900;
+      line-height: 1.2;
+
+      &.positive {
+        color: #10b981;
+      }
+
+      &.negative {
+        color: #ef4444;
+      }
+    }
+
+    .stat-trend {
+      display: flex;
+      align-items: center;
+      gap: $spacing-xs;
+      font-size: 0.75rem;
+      font-weight: $font-weight-medium;
+      margin-top: $spacing-sm;
+
+      &.up {
+        color: #10b981;
+      }
+
+      &.down {
+        color: #ef4444;
+      }
+
+      .material-icons {
+        font-size: 16px;
+      }
+    }
+
+    // Card variants
+    &.primary {
+      background: linear-gradient(135deg, $primary-blue-pale, $white);
+
+      .stat-value {
+        color: $primary-blue-dark;
+      }
+    }
+
+    &.success {
+      background: linear-gradient(135deg, #ecfdf5, $white);
+
+      .stat-value {
+        color: #10b981;
+      }
+    }
+
+    &.warning {
+      background: linear-gradient(135deg, #fffbeb, $white);
+
+      .stat-value {
+        color: #f59e0b;
+      }
+    }
+  }
+
+  // Additional sections
+  .charts-section {
+    margin-top: $spacing-xxl;
+
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: $spacing-xl;
+      margin-top: $spacing-lg;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .chart-card {
+      background: $white;
+      border: 1px solid $gray-200;
+      border-radius: $radius-lg;
+      padding: $spacing-xl;
+      box-shadow: 0 1px 3px $shadow-light;
+
+      .chart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: $spacing-xl;
+
+        .chart-title {
+          font-size: 1.125rem;
+          font-weight: $font-weight-semibold;
+          color: $gray-800;
+        }
+
+        .chart-actions {
+          display: flex;
+          gap: $spacing-sm;
+        }
+      }
+    }
+  }
+
+  // Recent activity section
+  .activity-section {
+    margin-top: $spacing-xxl;
+
+    .activity-list {
+      background: $white;
+      border: 1px solid $gray-200;
+      border-radius: $radius-lg;
+      overflow: hidden;
+      box-shadow: 0 1px 3px $shadow-light;
+
+      .activity-item {
+        display: flex;
+        align-items: center;
+        gap: $spacing-lg;
+        padding: $spacing-lg $spacing-xl;
+        border-bottom: 1px solid $gray-100;
+        transition: $transition-fast;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:hover {
+          background: $gray-50;
+        }
+
+        .activity-icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: $primary-blue-pale;
+          color: $primary-blue;
+
+          .material-icons {
+            font-size: 20px;
+          }
+        }
+
+        .activity-content {
+          flex: 1;
+
+          .activity-title {
+            font-weight: $font-weight-medium;
+            color: $gray-800;
+            margin-bottom: $spacing-xs;
+          }
+
+          .activity-desc {
+            font-size: 0.875rem;
+            color: $gray-600;
+          }
+        }
+
+        .activity-time {
+          font-size: 0.75rem;
+          color: $gray-500;
+          font-weight: $font-weight-medium;
+        }
+      }
+    }
+  }
+
+  // Quick actions
+  .quick-actions {
+    margin-top: $spacing-xxl;
+
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: $spacing-lg;
+      margin-top: $spacing-lg;
+    }
+
+    .action-card {
+      background: $white;
+      border: 1px solid $gray-200;
+      border-radius: $radius-lg;
+      padding: $spacing-xl;
+      text-align: center;
+      transition: $transition;
+      cursor: pointer;
+      box-shadow: 0 1px 3px $shadow-light;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-color: $primary-blue;
+      }
+
+      .action-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: $radius-md;
+        background: $primary-blue-pale;
+        color: $primary-blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto $spacing-lg;
+        transition: $transition;
+
+        .material-icons {
+          font-size: 28px;
+        }
+      }
+
+      .action-title {
+        font-weight: $font-weight-semibold;
+        color: $gray-800;
+        margin-bottom: $spacing-sm;
+      }
+
+      .action-desc {
+        font-size: 0.875rem;
+        color: $gray-600;
+        line-height: 1.4;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding: $spacing-lg;
+
+    .cards-row {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+
+    .page-title {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+// Utility classes
+.text-positive {
+  color: #10b981 !important;
+}
+
+.text-negative {
+  color: #ef4444 !important;
+}
+
+.text-muted {
+  color: $gray-600 !important;
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(135deg, $primary-blue, $primary-blue-dark) !important;
+  color: $white !important;
+}

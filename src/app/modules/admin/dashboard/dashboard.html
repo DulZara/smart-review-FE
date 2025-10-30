@@ -1,0 +1,26 @@
+<div class="container">
+  <h2 class="h2">Admin Dashboard</h2>
+  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:16px;">
+    <div class="card">
+      <div class="flex justify-between items-center">
+        <span class="muted">Users</span>
+        <a routerLink="/app/admin/users">Manage</a>
+      </div>
+      <div style="font-size:28px; font-weight:700;">—</div>
+    </div>
+    <div class="card">
+      <div class="flex justify-between items-center">
+        <span class="muted">Approvals</span>
+        <a routerLink="/app/admin/approvals">Open</a>
+      </div>
+      <div style="font-size:28px; font-weight:700;">—</div>
+    </div>
+    <div class="card">
+      <div class="flex justify-between items-center">
+        <span class="muted">Announcements</span>
+        <a routerLink="/app/admin/announcements">Open</a>
+      </div>
+      <div style="font-size:28px; font-weight:700;">—</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<section class="students-wrapper">
+  <div class="header-row">
+    <h1 class="page-title">Students</h1>
+    <button class="add-btn">Add Student</button>
+  </div>
+
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Age</th>
+          <th style="text-align:right;">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of students">
+          <td>{{ s.name }}</td>
+          <td class="link-like">{{ s.age }}</td>
+          <td class="view-cell">
+            <a class="view-link">View</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pagination-row" *ngIf="totalPages() > 1">
+      <button class="page-arrow" (click)="goToPage(page-1)">&lt;</button>
+
+      <button
+        class="page-num"
+        *ngFor="let p of pagesArray()"
+        [class.active]="p === page"
+        (click)="goToPage(p)"
+      >
+        {{ p }}
+      </button>
+
+      <button class="page-arrow" (click)="goToPage(page+1)">&gt;</button>
+    </div>
+  </div>
+</section>

@@ -3,7 +3,7 @@
 <nav class="nav">
     <div class="brand">StudyReview</div>
   <!-- Admin Section -->
-  <div class="menu-group" *ngIf="userRole === 'ADMIN'">
+  <!-- <div class="menu-group" *ngIf="userRole === 'TEACHER'">
     <button class="menu-header" (click)="toggle('admin')">
       <mat-icon>{{ isOpen('admin') ? 'expand_less' : 'expand_more' }}</mat-icon>
       <span>Admin</span>
@@ -13,7 +13,7 @@
       <a routerLink="/app/admin/teacher" routerLinkActive="active" class="link">Manage Teachers</a>
       <a routerLink="/app/admin/student" routerLinkActive="active" class="link">Manage Students</a>
     </div>
-  </div>
+  </div> -->
 
   <!-- Student Section -->
   <div class="menu-group" *ngIf="userRole === 'STUDENT'">
@@ -27,7 +27,24 @@
       <a routerLink="/app/student/messages" routerLinkActive="active" class="link">Messages</a>
     </div>
   </div>
-
+    <div class="menu-group" *ngIf="userRole === 'ADMIN'">
+        <nav class="teacher-nav">
+        <a routerLink="/app/admin/dashboard" routerLinkActive="active" class="nav-item">
+            <mat-icon class="nav-icon">home</mat-icon>
+            <span>Dashboard</span>
+        </a>
+    
+        <a routerLink="/app/admin/student" routerLinkActive="active"  class="nav-item">
+            <mat-icon class="nav-icon">class</mat-icon>
+            <span>Classes</span>
+        </a>
+    
+        <a routerLink="/app/admin/teacher" routerLinkActive="active" class="nav-item">
+            <mat-icon class="nav-icon">chat</mat-icon>
+            <span>Messages</span>
+        </a>
+        </nav>
+    </div>
   <!-- Teacher Section -->
   <!-- 🧑‍🏫 Teacher Menu -->
     <div class="menu-group" *ngIf="userRole === 'TEACHER'">

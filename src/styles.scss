@@ -1,40 +1,22 @@
-// 1) All @use statements must be at the very top
-@use '@angular/material' as mat; // Material M3 theme mixins
+
 @use 'styles/_tokens' as *;
 @use 'styles/_reset' as *;
 @use 'styles/_typography' as *;
 @use 'styles/_layout' as *;
 @use 'styles/_utilities' as *;
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
-// 2) Then write rules that consume those modules
-html {
-  @include mat.theme((
-    color: (
-      primary: mat.$magenta-palette,
-      tertiary: mat.$violet-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
-}
-
-/* Base surface + font */
 body {
   color-scheme: light;
-  margin: 0;
-}
-
-/* Reset-ish */
-* {
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-}
-
-body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", Roboto, "Helvetica Neue", Arial, sans-serif;
   background-color: #ffffff;
   color: #0a0a0a;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -46,7 +28,7 @@ h1, h2, h3, h4, h5, h6 {
 p {
   margin: 0;
   line-height: 1.4;
-  color: #4a5568; /* gray-600 vibe */
+  color: #4a5568;
 }
 
 table {

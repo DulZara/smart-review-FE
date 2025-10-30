@@ -4,6 +4,7 @@ import { Component, TemplateRef } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { TeacherService } from '../../service/teacher-service';
+import { Modal } from 'bootstrap';
 interface ClassCard {
   code: string;
   title: string;
@@ -27,18 +28,18 @@ export class Classes {
     this.loadClasses();
   }
    loadClasses(): void {
-    console.log("working");
+    // console.log("working");
     
-    this.teacherService.getAllClasses(1).subscribe({
-      next: (res) => (this.classes = res.body),
-      error: (err) => console.error('Error fetching classes:', err),
-    });
+    // this.teacherService.getAllClasses(1).subscribe({
+    //   next: (res) => (this.classes = res.body),
+    //   error: (err) => console.error('Error fetching classes:', err),
+    // });
   }
   
 
-  openModal(ngTemplate: TemplateRef<any>): void {
-    this.modalService.open(ngTemplate, { centered: true, size: 'lg' }); 
-  }
+  // openModal(ngTemplate: TemplateRef<any>): void {
+  //   this.modalService.open(ngTemplate, { centered: true, size: 'lg' }); 
+  // }
   onImageSelected(event: any): void {
     // const file = event.target.files[0];
     // if (file) {
@@ -46,22 +47,34 @@ export class Classes {
     // }
   }
 
-  saveClass(modal: any): void {
-    // if (this.classForm.valid) {
-    //   const value = this.classForm.value;
-    //   this.classes.push({
-    //     code: `C${this.classes.length + 1}00`,
-    //     title: value.className,
-    //     nextSession: 'Not scheduled',
-    //     students: 0,
-    //     reviewCompletion: 0
-    //   });
-    //   modal.close();
-    //   this.classForm.reset();
-    // }
-  }
+
   addClass(){
 
   }
+  newClass = {
+    className: '',
+    description: '',
+  };
+
+  private modalInstance!: Modal;
+
+  // constructor(private teacherService: TeacherService) {}
+
+  openModal(): void {
+    const modalElement = document.getElementById('addClassModal');
+    if (modalElement) {
+      this.modalInstance = new Modal(modalElement);
+      this.modalInstance.show();
+    }
+  }
+
+  saveClass(form: any): void {
+    if (form.valid) {
+      console.log('Submitting class:', this.newClass);
+
+     
+    }
+  }
+  
 
 }

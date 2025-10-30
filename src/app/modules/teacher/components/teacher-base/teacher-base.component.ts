@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { AdminRoutingModule } from "../../../admin/admin-routing.module";
 import { Header } from "../../../../core/components/header/header";
 import { SideBar } from "../../../../core/components/side-bar/side-bar";
+import { TeacherRoutingModule } from '../../teacher-routing.module';
+import { AdminRoutingModule } from '../../../admin/admin-routing.module';
 
 @Component({
   selector: 'app-teacher-base',
