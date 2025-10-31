@@ -1,25 +1,29 @@
 <section class="teachers-wrapper">
   <div class="header-row">
     <h1 class="page-title">Teachers</h1>
-    <button class="add-btn">Add Teacher</button>
+    <button class="add-btn" (click)="openModal()">Add Teacher</button>
   </div>
 
   <div class="table-card">
-    <table>
+     <table>
       <thead>
         <tr>
-          <th>Teacher Name</th>
-          <th>Subject</th>
+          <th>User Name</th>
+          <th>Student Name</th>
+          <th>Email</th>
+          <th>Telephone No:</th>
           <th style="text-align:right;">Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let t of teachers">
-          <td>{{ t.name }}</td>
-          <td class="link-like">{{ t.subject }}</td>
-          <td class="view-cell">
-            <a class="view-link">View</a>
-          </td>
+        <tr *ngFor="let s of teachers">
+          <td>{{ s.userName }}</td>
+          <td>{{ s.firstName }} {{ s.lastName }}</td>
+           <td>{{ s.email }}</td>
+          <td>{{ s.mobileNumber }}</td>
+
+
+          <td class="view-cell"><a class="view-link">View</a></td>
         </tr>
       </tbody>
     </table>
@@ -40,3 +44,77 @@
     </div>
   </div>
 </section>
+
+<!-- ✅ Modal Overlay -->
+<div class="modal-backdrop" *ngIf="isModalOpen" (click)="closeModal()"></div>
+
+<!-- ✅ Add Student Modal -->
+<div class="modal" *ngIf="isModalOpen">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>Add Student</h2>
+
+    <form [formGroup]="teacherForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <label>Username</label>
+        <input formControlName="userName" />
+        <small *ngIf="f['userName'].invalid && f['userName'].touched">
+          Username is required (3–30 chars, letters/numbers/_/-)
+        </small>
+      </div>
+
+      <div class="form-row">
+        <label>First Name</label>
+        <input formControlName="firstName" />
+        <small *ngIf="f['firstName'].invalid && f['firstName'].touched">
+          Only English letters, single spaces allowed
+        </small>
+      </div>
+
+      <div class="form-row">
+        <label>Last Name</label>
+        <input formControlName="lastName" />
+        <small *ngIf="f['lastName'].invalid && f['lastName'].touched">
+          Only English letters, single spaces allowed
+        </small>
+      </div>
+
+      <div class="form-row">
+        <label>Email</label>
+        <input formControlName="email" type="email" />
+        <small *ngIf="f['email'].invalid && f['email'].touched">Valid email required</small>
+      </div>
+
+      <div class="form-row">
+        <label>Password</label>
+        <input formControlName="password" type="password" />
+        <small *ngIf="f['password'].invalid && f['password'].touched">
+          8–64 chars, must include upper, lower, digit, special char
+        </small>
+      </div>
+
+      <div class="form-row">
+        <label>Mobile</label>
+        <input formControlName="mobileNumber" />
+        <small *ngIf="f['mobileNumber'].invalid && f['mobileNumber'].touched">
+          Must match +947xxxxxxxx or 07xxxxxxxx
+        </small>
+      </div>
+
+      <div class="form-row">
+        <label>Role</label>
+        <select formControlName="role">
+          <option value="STUDENT">Student</option>
+          <option value="TEACHER">Teacher</option>
+        </select>
+        <small *ngIf="f['role'].invalid && f['role'].touched">Role is required</small>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="cancel" (click)="closeModal()">Cancel</button>
+        <button type="submit" class="submit" [disabled]="teacherForm.invalid">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
