@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminStats } from '../../../core/models/stats.model';
-import { AdminDataService } from '../../../core/services/admin-data.service';
 import { CommonModule } from '@angular/common';
+import { AdminStats } from '../../../../core/models/stats.model';
+import { AdminDataService } from '../../../../core/services/admin-data.service';
 
 @Component({
   selector: 'app-admin-dashboard',
   imports: [CommonModule],
-  standalone: true,
   templateUrl: './admin-dashboard.html',
   styleUrl: './admin-dashboard.scss',
 })

@@ -1,4 +1,3 @@
-// Teachers Section Styles
 $primary-blue: #3b82f6;
 $primary-blue-dark: #2563eb;
 $primary-blue-light: #1d4ed8;
@@ -43,7 +42,92 @@ $radius-lg: 12px;
 // Transitions
 $transition: all 0.3s ease;
 $transition-fast: all 0.2s ease;
-.teachers-wrapper {
+
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 600px;
+  height: 850px;
+  z-index: 2001;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  margin: 20px;
+}
+
+.form-row {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75rem;
+
+  label {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  input,
+  select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+
+  small {
+    color: red;
+    font-size: 0.75rem;
+  }
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  .cancel {
+    background: #ccc;
+    color: #000;
+  }
+
+  .submit {
+    background: #3b82f6;
+    color: #fff;
+  }
+
+  button {
+    margin: 10px;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+}
+
+// Students Section Styles
+.students-wrapper {
   max-width: 1200px;
   margin: 0 auto;
   padding: $spacing-xl;
@@ -69,13 +153,13 @@ $transition-fast: all 0.2s ease;
         content: '';
         width: 4px;
         height: 24px;
-        background: linear-gradient(135deg, $primary-blue, $primary-blue-dark);
+        background: linear-gradient(135deg, #10b981, #059669);
         border-radius: $radius-sm;
       }
     }
 
     .add-btn {
-      background: linear-gradient(135deg, $primary-blue, $primary-blue-dark);
+      background: linear-gradient(135deg, #10b981, #059669);
       color: $white;
       border: none;
       border-radius: $radius-md;
@@ -87,11 +171,11 @@ $transition-fast: all 0.2s ease;
       display: flex;
       align-items: center;
       gap: $spacing-sm;
-      box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+      box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
 
       &:hover {
         transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
+        box-shadow: 0 4px 8px rgba(16, 185, 129, 0.4);
       }
 
       &:active {
@@ -176,8 +260,8 @@ $transition-fast: all 0.2s ease;
               border-radius: $radius-sm;
 
               &:hover {
-                color: $primary-blue;
-                background: $primary-blue-pale-hover;
+                color: #10b981;
+                background: #ecfdf5;
               }
             }
           }
@@ -186,7 +270,7 @@ $transition-fast: all 0.2s ease;
             text-align: right;
 
             .view-link {
-              color: $primary-blue;
+              color: #10b981;
               font-weight: $font-weight-semibold;
               cursor: pointer;
               text-decoration: none;
@@ -199,8 +283,8 @@ $transition-fast: all 0.2s ease;
               font-size: 0.875rem;
 
               &:hover {
-                background: $primary-blue-pale;
-                color: $primary-blue-dark;
+                background: #ecfdf5;
+                color: #059669;
               }
 
               &::after {
@@ -244,9 +328,9 @@ $transition-fast: all 0.2s ease;
       color: $gray-700;
 
       &:hover:not(:disabled) {
-        background: $primary-blue-pale;
-        border-color: $primary-blue;
-        color: $primary-blue-dark;
+        background: #ecfdf5;
+        border-color: #10b981;
+        color: #059669;
       }
 
       &:disabled {
@@ -283,8 +367,8 @@ $transition-fast: all 0.2s ease;
       }
 
       &.active {
-        background: linear-gradient(135deg, $primary-blue, $primary-blue-dark);
-        border-color: $primary-blue;
+        background: linear-gradient(135deg, #10b981, #059669);
+        border-color: #10b981;
         color: $white;
         font-weight: $font-weight-semibold;
       }
@@ -302,7 +386,49 @@ $transition-fast: all 0.2s ease;
   }
 }
 
-// Empty state
+// Student-specific status indicators
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-sm;
+  font-size: 0.75rem;
+  font-weight: $font-weight-medium;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &.status-active {
+    background: #ecfdf5;
+    color: #059669;
+  }
+
+  &.status-inactive {
+    background: #fef2f2;
+    color: #dc2626;
+  }
+
+  &.status-pending {
+    background: #fffbeb;
+    color: #d97706;
+  }
+}
+
+// Grade indicators
+.grade-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-weight: $font-weight-semibold;
+
+  &.grade-a { color: #059669; }
+  &.grade-b { color: #10b981; }
+  &.grade-c { color: #f59e0b; }
+  &.grade-d { color: #f97316; }
+  &.grade-f { color: #dc2626; }
+}
+
+// Empty state for students
 .empty-state {
   text-align: center;
   padding: $spacing-xxl;
@@ -312,6 +438,7 @@ $transition-fast: all 0.2s ease;
     font-size: 3rem;
     margin-bottom: $spacing-lg;
     opacity: 0.5;
+    color: #10b981;
   }
 
   .empty-text {
@@ -323,6 +450,22 @@ $transition-fast: all 0.2s ease;
   .empty-subtext {
     font-size: 0.875rem;
     margin-bottom: $spacing-xl;
+  }
+
+  .empty-action {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: $white;
+    border: none;
+    border-radius: $radius-md;
+    padding: $spacing-md $spacing-lg;
+    font-weight: $font-weight-semibold;
+    cursor: pointer;
+    transition: $transition-fast;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(16, 185, 129, 0.4);
+    }
   }
 }
 
@@ -339,12 +482,27 @@ $transition-fast: all 0.2s ease;
     gap: $spacing-md;
     color: $gray-500;
     font-size: 0.875rem;
+
+    &::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      border: 2px solid $gray-300;
+      border-top: 2px solid #10b981;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
   }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 // Responsive design
 @media (max-width: 768px) {
-  .teachers-wrapper {
+  .students-wrapper {
     padding: $spacing-lg;
 
     .header-row {
@@ -386,7 +544,7 @@ $transition-fast: all 0.2s ease;
 
 // Dark mode support
 @media (prefers-color-scheme: dark) {
-  .teachers-wrapper {
+  .students-wrapper {
     .table-card {
       background: $gray-900;
       border-color: $gray-700;
@@ -416,6 +574,7 @@ $transition-fast: all 0.2s ease;
 
               .link-like:hover {
                 background: $gray-700;
+                color: #10b981;
               }
             }
           }
@@ -434,8 +593,12 @@ $transition-fast: all 0.2s ease;
         color: $gray-300;
 
         &:hover:not(:disabled) {
-          background: $primary-blue;
-          border-color: $primary-blue;
+          background: #10b981;
+          border-color: #10b981;
+        }
+
+        &.active {
+          background: linear-gradient(135deg, #10b981, #059669);
         }
       }
     }
